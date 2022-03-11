@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import Main from './pages/main/Main';
+import Read from './pages/read/Read';
 import Write from './pages/write/Write';
 
 const Router: FC = () => {
@@ -14,6 +15,7 @@ const Router: FC = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/write" element={<Write />} />
+          <Route path="/read" element={<Read />} />
         </Routes>
       </MainBackGround>
     </BrowserRouter>

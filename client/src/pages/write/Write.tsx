@@ -1,12 +1,17 @@
 import React, { FC, useState } from 'react';
 
+interface letterInfo {
+  title: string;
+  contents: string;
+}
+
 const Write: FC = () => {
-  const [letterInfo, setLetterInfo] = useState({
+  const [letterInfo, setLetterInfo] = useState<letterInfo>({
     title: '',
     contents: '',
   });
 
-  const handleChangeContents = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChangeLetterContents = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     setLetterInfo({
@@ -27,11 +32,17 @@ const Write: FC = () => {
   return (
     <div>
       <form onSubmit={handleLetterSubmit}>
-        <input name="title" value={letterInfo.title} onChange={handleChangeContents} required placeholder="제목" />
+        <input
+          name="title"
+          value={letterInfo.title}
+          onChange={handleChangeLetterContents}
+          required
+          placeholder="제목"
+        />
         <textarea
           name="contents"
           value={letterInfo.contents}
-          onChange={handleChangeContents}
+          onChange={handleChangeLetterContents}
           required
           placeholder="내용"
         />
