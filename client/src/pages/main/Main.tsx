@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+/* import styled from 'styled-components'; */
 
 const Main: FC = () => {
   return (
@@ -15,7 +15,7 @@ const Main: FC = () => {
   );
 };
 
-const MainBackGround = styled.div`
+/* const MainBackGround = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -26,5 +26,5 @@ const MainBackGround = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `;
-
+ */
 export default Main;
