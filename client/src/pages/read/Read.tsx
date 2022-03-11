@@ -10,11 +10,15 @@ interface letterInfo {
 const Read: FC = () => {
   const [letterInfo, setLetterInfo] = useState<letterInfo>();
 
+  const randomLetterInfoNum = (length: number): number => {
+    const num = Math.floor(length * Math.random());
+    return num;
+  };
+
   useEffect(() => {
     const getLetterInfo = () => {
       axios.get('/data/letterInfo.json').then((res) => {
-        setLetterInfo(res.data.letterInfo[0]);
-        console.log(res.data.letterInfo);
+        setLetterInfo(res.data.letterInfo[randomLetterInfoNum(res.data.letterInfo.length)]);
       });
     };
     getLetterInfo();
