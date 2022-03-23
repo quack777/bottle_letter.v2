@@ -34,5 +34,5 @@ app.get('/letterInfo', (req, res) => {
 }); */
 
 app.listen(3000, () => {
-  console.log('server is listening!');
+  console.log('http://localhost:3000/');
 });
