@@ -5,10 +5,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('build'));
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/build/index.html');
-});
-
 app.get('/letterInfo', (req, res) => {
   res.send({
     letterInfo: [
@@ -34,6 +30,9 @@ app.get('/letterInfo', (req, res) => {
 /* app.post('/writeLetter', (req, res) => {
   const user = req.body;
 }); */
+app.get('*', function (req, res) {
+  res.sendFile(__dirname + '/build/index.html');
+});
 
 app.listen(PORT, () => {
   console.log('http://localhost:3000/');
