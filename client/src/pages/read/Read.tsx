@@ -17,7 +17,8 @@ const Read: FC = () => {
 
   useEffect(() => {
     const getLetterInfo = () => {
-      axios.get('/data/letterInfo.json').then((res) => {
+      // axios.get('/data/letterInfo.json').then((res) => {
+      axios.get('http://localhost:3000/letterInfo').then((res) => {
         setLetterInfo(res.data.letterInfo[randomLetterInfoNum(res.data.letterInfo.length)]);
       });
     };
