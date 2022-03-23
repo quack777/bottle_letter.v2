@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.use(express.static('build'));
 
 app.get('/', function (req, res) {
@@ -33,6 +35,6 @@ app.get('/letterInfo', (req, res) => {
   const user = req.body;
 }); */
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('http://localhost:3000/');
 });
