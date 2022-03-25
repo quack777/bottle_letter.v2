@@ -1,9 +1,22 @@
 import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import config from '../config/config';
+dotenv.config();
+
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.static('build'));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+mongoose
+  .connect(config.mongo.url)
+  .then(() => console.log('Successfully connected to mongodb'))
+  .catch((e) => console.error(e));
 
 app.get('/letterInfo', (req, res) => {
   res.send({
@@ -27,13 +40,10 @@ app.get('/letterInfo', (req, res) => {
   });
 });
 
-/* app.post('/writeLetter', (req, res) => {
-  const user = req.body;
-}); */
 app.get('*', function (req, res) {
   res.sendFile(__dirname + '/build/index.html');
 });
 
 app.listen(PORT, () => {
-  console.log('http://localhost:3000/');
+  console.log('http://localhost:4000/');
 });
