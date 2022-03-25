@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import config from '../config/config';
+import { LetterWrite } from '../model/letterWrite.model';
 dotenv.config();
 
 const app = express();
@@ -42,6 +43,10 @@ app.get('/letterInfo', (req, res) => {
 
 app.get('*', function (req, res) {
   res.sendFile(__dirname + '/build/index.html');
+});
+
+app.post('/post', (req, res) => {
+  const letter = new LetterWrite(req.body);
 });
 
 app.listen(PORT, () => {
