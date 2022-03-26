@@ -47,6 +47,12 @@ app.get('*', function (req, res) {
 
 app.post('/post', (req, res) => {
   const letter = new LetterWrite(req.body);
+  letter.save((err, doc) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({
+      success: true,
+    });
+  });
 });
 
 app.listen(PORT, () => {
